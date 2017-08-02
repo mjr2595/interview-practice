@@ -76,3 +76,24 @@ function largestNumber(array) {
 
 console.log(largestNumber(["79", "82", "34", "83", "69"]));
 
+// Fisher-Yates shuffle algo
+function shuffle(array) {
+  var n = array.length;
+  while (n) {
+    randomIndex = Math.floor(Math.random() * n--);
+    swap(n, randomIndex, array);
+  }
+  return array;
+}
+
+function swap(oldIndex, newIndex, array) {
+  var temp = array[oldIndex];
+  array[oldIndex] = array[newIndex];
+  array[newIndex] = temp;
+}
+
+console.log(shuffle([1, 2, 3, 4, 5]));
+console.log(shuffle([1, 2, 3, 4, 5]));
+console.log(shuffle([1, 2, 3, 4, 5]));
+console.log(shuffle([1, 2, 3, 4, 5]));
+
