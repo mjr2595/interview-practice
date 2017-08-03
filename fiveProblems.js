@@ -52,6 +52,7 @@ function combineTwo(a, b) {
 
 console.log(combineTwo(['a', 'b', 'c', 'd'], [1, 2, 3, 4, 5, 6]));
 
+// Fib
 function fib(n, memo) {
   memo = [0, 1];
   if (n <= 1) {
@@ -63,6 +64,7 @@ function fib(n, memo) {
 }
 
 console.log(fib(7, []));
+
 
 function largestNumber(array) {
   return {
@@ -96,4 +98,23 @@ console.log(shuffle([1, 2, 3, 4, 5]));
 console.log(shuffle([1, 2, 3, 4, 5]));
 console.log(shuffle([1, 2, 3, 4, 5]));
 console.log(shuffle([1, 2, 3, 4, 5]));
+
+
+// Max sub array
+function maxSubArraySum(array) {
+  var size = array.length;
+  var maxSoFar = Number.MIN_SAFE_INTEGER;
+  var maxEndingHere = 0;
+
+  for (let i = 0; i < size; i++) {
+    maxEndingHere = maxEndingHere + array[i];
+    if (maxEndingHere < 0)
+      maxEndingHere = 0;
+    else if (maxSoFar < maxEndingHere)
+      maxSoFar = maxEndingHere;
+  }
+  return maxSoFar;
+}
+
+console.log(maxSubArraySum([-2, -3, 4, -1, -2, 1, 5, -3]));
 
