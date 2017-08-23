@@ -5,6 +5,8 @@ public class SumFinder {
   public static void main(String[] args) {
     int a[] = {1, 4, 45, 6, 10, -8};
     System.out.println(existsPair(a, -4));
+    int sorted[] = {2, 2, 4, 5, 6, 7, 40};
+    System.out.println(existsPairSorted(sorted, 12));
   }
 
   public static boolean existsPairSorted(int[] a, int target) {

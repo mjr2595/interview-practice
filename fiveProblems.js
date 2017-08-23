@@ -118,3 +118,29 @@ function maxSubArraySum(array) {
 
 console.log(maxSubArraySum([-2, -3, 4, -1, -2, 1, 5, -3]));
 
+function fearNotLetter(str) {
+  var n = str.charCodeAt(0);
+  var m = str.charCodeAt(str.length-1);
+  var idealSum = getSumFromRange(n, m);
+  var actualSum = getActualSum(str);
+  return idealSum === actualSum ? undefined : String.fromCharCode(idealSum - actualSum);
+}
+
+function getActualSum(str) {
+  var sum = 0;
+  for (var i = 0; i < str.length; i++) {
+    sum += str.charCodeAt(i);
+  }
+  return sum;
+}
+
+function getSumFromRange(n, m) {
+    var sum = 0;
+    for (var i = n; i <= m; i++) {
+      sum += i;
+    }
+    return sum;
+}
+
+console.log(fearNotLetter("abce"));
+
