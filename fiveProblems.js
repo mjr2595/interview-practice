@@ -118,6 +118,8 @@ function maxSubArraySum(array) {
 
 console.log(maxSubArraySum([-2, -3, 4, -1, -2, 1, 5, -3]));
 
+
+// find missing letter from substring of alphabet
 function fearNotLetter(str) {
   var n = str.charCodeAt(0);
   var m = str.charCodeAt(str.length-1);
@@ -144,3 +146,36 @@ function getSumFromRange(n, m) {
 
 console.log(fearNotLetter("abce"));
 
+
+// Make a queue with 2 stacks
+function QueueTwoStacks() {
+  this.inStack = [];
+  this.outStack = [];
+}
+
+QueueTwoStacks.prototype.enqueue = function(item) {
+  this.inStack.push(item);
+}
+
+QueueTwoStacks.prototype.dequeue = function() {
+  if (this.outStack.length === 0) {
+    // move everything over to outStack
+    while (this.inStack.length > 0) {
+      this.outStack.push(this.inStack.pop());
+    }
+    // If outStack is still empty, raise an error
+    if (this.outStack.length === 0) {
+      return undefined;
+    }
+  }
+  // else just pop off top item from outStack
+  this.outStack.pop();
+}
+
+var s = new QueueTwoStacks();
+s.enqueue(1);
+s.enqueue(2);
+s.enqueue(3);
+s.enqueue(4);
+s.dequeue();
+console.log(s);
