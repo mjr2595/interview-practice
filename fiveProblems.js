@@ -179,3 +179,47 @@ s.enqueue(3);
 s.enqueue(4);
 s.dequeue();
 console.log(s);
+
+
+// Check if parans or tokens are balanced
+const isBalancedParens = str => {
+  let stack = [];
+  let open = { '{': '}', '[': ']', '(': ')' };
+  let closed = { '}': true, ']': true, ')': true };
+
+  for (let i = 0; i < str.length; i++) {
+    let currChar = str[i];
+    if (open[currChar]) {
+      stack.push(currChar);
+    } else if (closed[currChar]) {
+      // only valid if top is the coresponding open paren
+      if (open[stack.pop()] !== currChar) {
+        return false;
+      }
+    }
+  }
+  // reached the end, only valid if no more open parens
+  return stack.length === 0;
+}
+console.log(isBalancedParens('()'));
+console.log(isBalancedParens('([])'));
+console.log(isBalancedParens('([)]'));
+
+// Check if a number is prime
+const isPrime = num => {
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) return false;
+  }
+  return num !== 1;
+}
+console.log(isPrime(5));
+console.log(isPrime(2));
+console.log(isPrime(10));
+console.log(isPrime(45));
+/* ** NOTE **
+you can also decrease complexity of algorithm
+from O(n) to O(sqrt(n)) if you run the loop until
+square root of number
+i <= Math.sqrt(num)
+*/ 
+
